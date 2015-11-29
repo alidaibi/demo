@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" dir="ltr">
+    <head>
+        <script src="template.js"></script> 
+		<script src="jquery.1.2.6.js"></script>
+        <script id="test" type="text/html">
+           <tr>
+			<td>{{a}}</td>
+			<td>{{b}}</td>
+			<td>{{c}}</td>
+			<td>{{d}}</td>
+			<td>{{e}}</td>
+			<td>{{f}}</td>
+		   </tr>
+        </script>
+		<script>
+			var data = {a:1,b:2,c:3,d:4,e:5,f:6};
+			var html = template("test",data);
+			alert(html);
+			$("body").append(html);
+		</script>
+    </head>
+    <body>
+        
+    </body>
+</html>

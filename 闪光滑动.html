@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>按钮样式</title>
+  <script>
+		
+  </script>
+  <style>
+	body,html{
+		height:100%;
+	}
+	*{
+		box-sizing:border-box;
+	}
+	#pic{
+		position: relative;
+		  top: 50%;
+		  -webkit-transform: translateY(-50%);
+		  -ms-transform: translateY(-50%);
+		  transform: translateY(-50%);
+		  display: block;
+		  margin:0px auto;
+	}
+	.light{
+		 background-image: -moz-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.5),rgba(255,255,255,0));
+		background-image: -webkit-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.5),rgba(255,255,255,0));
+		display:block;
+		position:absolute;
+		width:200px;
+		height:556px;
+		transform:skewx(-25deg);
+		top:0px;
+		left:0px;
+	}
+	.overimg:hover .light{
+		left:1500px;
+		 
+		transition:left 0.5s;
+	}
+  </style>
+ </head>
+ <body>
+	
+	<div style="width:100%;height:100%;" class="overimg ">
+		
+		<img src="file:///D:/%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95/%E6%88%91%E7%9A%84%E5%9B%BE%E7%89%87/1.jpg"   id="pic" />
+		<a id="gl" class="light"></a>
+	</div> 
+ </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>橡皮摩擦效果</title>
+  <script>
+		window.onload = function(){
+			var content = document.getElementById("mycanvas");
+			var ctx = content.getContext("2d");
+			var drawing = false;
+			var radius = 25; //圆圈的半径
+			ctx.style="#00aeff";
+			ctx.fillRect(0,0,content.width,content.height);
+			ctx.fill();
+			function getBoundingClientRect(x,y){
+				var box = content.getBoundingClientRect();//获取canvas离浏览器视窗上下左右距离
+				return {x:x-box.left,y:y-box.top};
+			}
+			function drawCanvas(x,y){
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(x,y,radius,0,Math.PI*2,false);
+				ctx.clip();
+				ctx.clearRect(0,0,content.width,content.height);
+				ctx.restore();
+			}
+			content.onmousedown = function(e){
+				var first = getBoundingClientRect(e.clientX,e.clientY);
+				drawCanvas(first.x,first.y);
+				drawing = true;
+			}
+			content.onmousemove = function(e){
+				if(drawing){
+					var move = getBoundingClientRect(e.clientX,e.clientY);
+					drawCanvas(move.x,move.y);
+				}
+			}
+			content.onmouseup = function(){
+				drawing = false;
+			}
+		}
+  </script>
+ </head>
+ <body>
+	<canvas width="400" height="400" id="mycanvas" style="background: transparent url('http://www.w3cfuns.com/data/attachment/album/201509/24/112500dn895qvrg8vmfv22.jpg') no-repeat scroll 0% 0% / 100% 100%;"></canvas>
+ </body>
+</html>

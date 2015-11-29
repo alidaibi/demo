@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 canvas带渐变色的圆形进度条动画</title>
+<style>
+	.wrap{
+		width: 100%;
+		min-width: 980px;
+		overflow: hidden;
+	}
+	.part1_wrap{
+		width: 100%;
+		height: 864px;
+		background-color: #7D6CEE;
+		overflow: hidden;
+	}
+	.bgbox{
+		position: absolute;
+		bottom: -200px;
+		background-repeat: no-repeat;
+	}
+	.part1_wrap .bgbox1{
+		background-image: url("http://bbx.sina.com.cn/css/../images/bgbox1.png");
+		width: 228px;
+		height: 199px;
+		left: 208px;
+		bottom: 371px;
+	}
+	.part1_wrap .bgbox2{
+		background-image: url("http://bbx.sina.com.cn/css/../images/bgbox2.png");
+		width: 101px;
+		height: 93px;
+		left: 208px;
+		bottom: 117px;
+	}
+	.part1_wrap .bgbox3{
+		background-image: url("http://bbx.sina.com.cn/css/../images/bgbox3.png");
+		width: 152px;
+		height: 154px;
+		left: 38px;
+		bottom: 268px;
+		transform: rotate(720deg);
+	}
+	.part1_wrap .bgbox4{
+		background-image: url("http://bbx.sina.com.cn/css/../images/bgbox4.png");
+		width: 140px;
+		height: 150px;
+		right: 130px;
+		bottom: 314px;
+	}
+	.part1_wrap .bgbox5{
+		background-image: url("http://bbx.sina.com.cn/css/../images/bgbox5.png");
+		width: 132px;
+		height: 123px;
+		right: 303px;
+		bottom: 380px;
+		transform: rotate(1080deg);
+	}
+	.part1_wrap .bgbox6{
+		background-image: url("http://bbx.sina.com.cn/css/../images/bgbox6.png");
+		width: 124px;
+		height: 126px;
+		right: 218px;
+		bottom: 101px;
+	}
+</style>
+    <!--[if IE]>
+                <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div class="wrap">
+		<div class="part1_wrap">
+			<div class="bgbox bgbox1 tansnone"></div>
+			<div class="bgbox bgbox2 tansnone"></div>
+			<div class="bgbox bgbox3 tansnone"></div>
+			<div class="bgbox bgbox4 tansnone"></div>
+			<div class="bgbox bgbox5 tansnone"></div>
+			<div class="bgbox bgbox6 tansnone"></div>
+		</div>
+	</div>
+    <script src="jquery.1.2.6.js"></script>
+<script>
+	;(function(){
+		var orl = [],
+                orr = [],
+                orb = [];
+
+
+            setTimeout(function () {
+
+                $('.bgbox').each(function (n) {
+                    orl.push(parseInt($(this).css('left')));
+                    orr.push(parseInt($(this).css('right')));
+                    orb.push(parseInt($(this).css('bottom')));
+                });
+
+                $('.part1_wrap').mousemove(function (e) {
+                    // console.log(1);
+                    var w = $(this).width();
+                    var h = $(this).height();
+                    var ex = e.clientX;
+                    var ey = e.clientY;
+
+                    var percent = (ex - w / 2) / (w / 2);
+                    var target = 40 * percent;
+
+                    var percent2 = (ey - 600) / 600;
+                    var target2 = 25 * percent2;
+
+                    $('.bgbox').each(function (index) {
+
+                        if ($(this).offset().left > w / 2) {
+                            $(this).css('right', orr[index] + target);
+                        } else {
+                            $(this).css('left', orl[index] + target);
+                        }
+
+                        $(this).css('bottom', orb[index] - target2);
+
+                    });
+                });
+            }, 1000);
+
+	})(jQuery);
+</script>
+</body>
+
+</html>

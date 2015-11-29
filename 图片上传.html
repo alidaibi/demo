@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>图片上传</title>
+  <style>
+	#cx-uploadImg{
+		width:800px;
+		margin:0px auto;
+	}
+	.add{
+		width:150px;
+		height:150px;
+		border:1px dashed #aaa;
+		line-height:150px;
+		text-align:center;
+		font-weight:bold;
+		font-size:150px;
+		cursor:pointer;
+	}
+  </style>
+  <script src="jquery.1.2.6.js"></script>
+  <script src="imgUpload.js"></script>
+  <script>
+		$(function(){
+			$('#cx-uploadImg').uploadImg();
+		})
+  </script>
+ </head>
+ <body>
+	<div id="cx-uploadImg">
+	</div>
+ </body>
+</html>

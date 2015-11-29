@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=utf-8;">
+<title>移动端触摸滑动</title>
+<meta name="author" content="rainna" />
+<meta name="keywords" content="rainna's js lib" />
+<meta name="description" content="移动端触摸滑动" />
+<meta name="viewport" content="target-densitydpi=320,width=640,user-scalable=no">
+<style>
+
+</style>
+</head>
+
+<body>
+<img id="d" src="http://imglf1.ph.126.net/qKodH3sZoVbPalKFtHS9mw==/6608946691259322175.jpg">
+
+<script>
+	var dz = document.getElementById("d");
+	dz.addEventListener("touchstart",function(event){ var touch = event.targetTouches[0]; alert(touch.pageX); },false);
+</script>
+</body>
+</html>
