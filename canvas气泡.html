@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+            简单的气泡效果
+        </title>
+        <style type="text/css">
+            body{background-color:#000000;margin:0px;overflow:hidden}
+        </style>
+    </head>
+    
+    <body>
+        
+    </body>
+
+</html>
+
+
+<script>
+            var canvas = document.createElement('canvas'),
+            context = canvas.getContext('2d'),
+            windowW = window.screen.width ,
+            windowH = window.screen.height ,
+            Mx,
+            My,
+            paused = true;
+            suzu = [];
+            booms = [];
+            boomks = [];
+            start();
+			
+            canvas.onmousemove = function(e) {
+                var loc = canvasMove(e.clientX, e.clientY);
+                Mx = loc.x;
+                My = loc.y
+            };
+			
+            canvas.onmousedown = function() {
+                creatarry(Mx, My);
+                paused = !paused
+            };
+			
+            function creatarry(a, b) {
+                for (var i = 0; i < 40; ++i) {
+                    booms[i] = {
+                        x: a,
+                        y: b,
+                        gravity: 0.3,
+                        speedX: Math.random() * 20 - 10,
+                        speedY: Math.random() * 15 - 7,
+                        radius: Math.random() * 15,
+                        color: Math.random() * 360,
+                        apc: 0.6
+                    };
+                    boomks.push(booms[i]);
+                    if (boomks.length > 300) {
+                        boomks.shift()
+                    };
+                    console.log(boomks)
+                }
+            };
+			
+            function loop1() {
+                boomks.forEach(function(circle) {
+                    context.beginPath();
+                    context.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2, false);
+                    context.fillStyle = 'hsla(' + circle.color + ',100%,60%,' + circle.apc + ')';
+                    context.fill();
+                    movecircles(circle)
+                })
+            }
+            function movecircles(circle) {
+                circle.x += circle.speedX;
+                circle.speedY += circle.gravity;
+                circle.y += circle.speedY;
+                circle.apc -= 0.008
+            }
+            function canvasMove(x, y) {
+                var bbox = canvas.getBoundingClientRect();
+                return {
+                    x: x - bbox.left * (canvas.width / bbox.width),
+                    y: y - bbox.top * (canvas.height / bbox.height)
+                }
+            };
+			
+            function start() {
+                document.body.appendChild(canvas);
+                canvas.width = windowW;
+                canvas.height = windowH;
+                setInterval(fang, 25)
+            }
+			
+            function fang() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                loop1();
+                loop()
+            }
+			
+            function loop() {
+                var circle = new createCircle(Mx, My);
+                suzu.push(circle);
+                for (i = 0; i < suzu.length; i++) {
+                    var ss = suzu[i];
+                    ss.render(context);
+                    ss.update()
+                }
+                if (suzu.length > 1000) {
+                    suzu.shift()
+                }
+            }
+			
+            function createCircle(x, y) {
+                this.x = x;
+                this.y = y;
+                this.color = Math.random() * 360;
+                this.radius = Math.random() * 25;
+                this.xVel = Math.random() * 5 - 2;
+                this.apc = 0.6;
+                this.gravity = 0.07;
+                this.yVel = Math.random() * 10 - 3;
+                this.render = function(c) {
+                    c.beginPath();
+                    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+                    c.fillStyle = 'hsla(' + this.color + ',100%,60%,' + this.apc + ')';
+                    c.fill()
+                };
+				
+                this.update = function() {
+                    if (!paused) {
+                        this.yVel += this.gravity;
+                        this.y += this.yVel
+                    } else {
+                        this.y -= 5
+                    }
+                    this.x += this.xVel;
+                    this.apc -= 0.01;
+                    if (this.radius > 1) {
+                        this.radius -= 0.4
+                    }
+                }
+            }
+        </script>
