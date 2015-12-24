@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>僵尸移动</title>
+  <style>
+	#zombie-container{
+			width: 100%;
+			height: 900px;
+			background: transparent url("background.jpg") no-repeat;
+			background-size: cover;
+		}
+	.walkingdead{
+		background: transparent url("walkingdead.png") no-repeat;
+		width: 200px;
+		height: 305px;
+		display: block;
+		animation: run 1.8s steps(10) infinite;
+	}
+	@keyframes  run{
+		0%{
+			background-position: 0;
+		}
+		100%{
+			background-position: -2000px;
+		}
+
+	}
+  </style>
+ </head>
+ <body>
+	<div id="zombie-container">
+		<i class="walkingdead"></i>
+	</div>
+ </body>
+</html>

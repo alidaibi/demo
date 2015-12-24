@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>气泡DEMO</title>
+  <style>
+	body{
+		background-color:#000000;margin:0px;overflow:hidden
+	}
+  </style>
+ </head>
+ <body>
+  
+ </body>
+ <script>
+	var canvas = document.createElement("canvas"),
+		context = canvas.getContext("2d"),
+		windowH = window.screen.height,
+		windowW = window.screen.width,
+		paused = true,
+		Mx,
+		My,
+		suzu = [],
+		booms = [],
+		boomks = [];
+		init();
+	function init(){
+		document.body.appendChild(canvas);
+		canvas.width = windowW;
+		canvas.height = windowH;
+		setInterval(fang,25);
+	}
+	function fang(){
+		context.clearRect(0,0,canvas.width,canvas.height);
+		loop1();
+		loop();
+	}
+	function loop1(){
+		boomks.forEach(function(circle){
+			context.beginPath();
+			context.arc(circle.x,circle.y,circle.radius,0,Math.PI * 2,false);
+			context.fillStyle = "hsla("+circle.color+",100%,60%,"+circle.apc+")";
+			context.fill();
+			movecircles(circle);
+		});
+	}
+	function movecircles(circle){
+		circle.x += circle.speedX;
+		circle.speedY += circle.gravity;
+		circle.y += circle.speedY;
+		circle.apc -= 0.008;
+	}
+	function loop(){
+		var circle = new createCircle(Mx,My);
+		suzu[suzu.length] = circle;
+		for(i = 0,len = suzu.length; i < len; i++){
+			var ss = suzu[i];
+			ss.render(contenxt);
+			ss.update();
+		}
+		if(suzu.length > 1000){
+			suzu.shift();
+		}
+	}
+	function createCircle(x,y){
+		this.x = x;
+		this.y = y;
+		this.color = Math.random() * 360;
+		this.radius = Math.random() * 25;
+		this.xVel = Math.random() * 5 - 2;
+		this.yVel = Math.random() * 10 - 3;
+		this.apc = 0.6;
+		this.gravity = 0.07;
+		this.render = function(c){
+			c.beginPath();
+			c.arc(this.x,this.y,this.radius,0,Math.PI * 2, true);
+			c.fillStyle = "hsla("+this.color+",100%,60%,"+this.apc+")";
+			c.fill();
+
+		}
+		this.update = function(){
+			if(!paused){
+				this.yVel += this.gravity;
+				this.y += this.yVel;
+			}else{
+				this.y -= 5;
+			}
+			this.x += this.xVel;
+			this.apc -= 0.01;
+			if(this.radius > 1){
+				this.radius -= 0.4;
+			}
+		}
+	}
+ </script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>分页JS代码</title>
+
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	(function(){
+		var Person = function(name){
+			this.name = name;
+		};
+		var Student = function(name, sex, id){
+			this.name = name || '无名';
+			this.sex = sex || '不明';
+			this.id = id || '0';
+		};
+		Student.prototype = new Person();
+		Student.prototype.getId = function(){
+			return this.id;
+		}
+		var y = new Person();
+		var s = new Student;
+		var s1 = y instanceof Person;
+		var s2 = s instanceof Student;
+		var s3 = s instanceof Person;
+		var s4 = Student.prototype.constructor === Person;
+		var s5 = Student.prototype === Person;
+		var s6 = Student.prototype === Function;
+
+		var s = '';
+	})();
+</script>
+</html>

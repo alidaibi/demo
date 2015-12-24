@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<title>DIV编辑框，可发表心情图片</title>  
+<link href="css/emotion.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/emotion.js"></script>   
+</head>  
+<body>  
+    <div class="div_mid">
+	    <div class="state" id = "mood_statusinput">
+	      	<div id="editdiv" contentEditable="true" style="height:50px;overflow:hidden;word-wrap: break-word;">Say something....</div>
+	    </div>
+	    <div class="state_fb">
+	    	<a id="face" href="javascript:void(0);" onclick="emotion(this.id,'editdiv',event)"><i></i></a>您还可输入<span class='msg'>200</span>个字符
+	        <input id="mood_add" name="add" class="butt_white" type="button" value="发 表" style="font-size:14px;">
+	    </div>
+	</div>
+	<script type="text/javascript">
+	$("#editdiv").bind({
+			  focus:function(){
+				  var text = $(this).text();
+				  if(text === "Say something...."){
+					  $(this).text('');
+				  }
+			  },
+			  keyup:countText
+	});
+	</script> 
+</body>  
+</html>

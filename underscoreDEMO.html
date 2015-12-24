@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <div id="u"></div>
+  <button id="cl">点击我</button>
+  
+ </body>
+ <script type="text/template" id="tpl">
+ {{ _.each(datas, function (item) { }}
+	  <div class="outer">
+	 {{= item.title }}
+	  </div>
+		{{ }); }}
+	</script>
+	<script src="jquery-1.7.js"></script>
+	<script src="underscore.js"></script>
+	<script type="text/javascript">
+	_.templateSettings = {
+		evaluate:    /\{\{(.+?)\}\}/g,
+		interpolate: /\{\{=(.+?)\}\}/g,
+		escape:      /\{\{-(.+?)\}\}/g
+	};
+	var datas = [
+	  {
+		title: '标题1',
+		url: 'http://www.baidu.com',
+		film: '电影名称1'
+	  },
+	  {
+		title: '标题2',
+		url: 'http://www.baidu.com',
+		film: '电影名称2'
+	  },
+	  {
+		title: '标题3',
+		url: 'http://www.baidu.com',
+		film: '电影名称3'
+	  },
+	  {
+		title: '标题4',
+		url: 'http://www.baidu.com',
+		film: '电影名称4'
+	  },
+	  {
+		title: '标题5',
+		url: 'http://www.baidu.com',
+		film: '电影名称5'
+	  }
+	];
+
+	$('body').html( _.template($('#tpl').html(), datas) );
+	</script>
+</html>

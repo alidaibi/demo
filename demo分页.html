@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	.page{margin:2em;}
+	.page a{text-decoration:none;display:inline-block;line-height:14px;padding:2px 5px;color:#333;border:1px solid #ccc;margin:0 2px;}
+	.page a:hover,.page a.on{background:#999;color:#fff;border:1px solid #333;}
+	.page a.unclick,.page a.unclick:hover{background:none;border:1px solid #eee;color:#999;cursor:default;}
+  </style>
+ </head>
+ <body>
+	<div class="page"></div>
+ </body>
+ <script>
+	//容器，总数，当前页
+	function setPage(container,count,pageIndex){
+		var container = container;
+		var count = count;
+		var pageIndex = pageIndex;
+		var a = [];
+		//如果总页数少于10 全部显示 大于10 显示前3 后3 中间3 其余....
+		if(pageIndex ===1) {
+			a[a.length] =  "<a href=\"#\" class=\"prev unclick\">上一页</a>";
+		}else{
+			a[a.length] =  "<a href=\"#\" class=\"prev\">上一页</a>";
+		}
+		function setPageList(){
+			if(pageIndex === i ){
+				a[a.length] =  "<a href=\"#\" class=\"on\">" + i + "</a>";
+			}else{
+				a[a.length] =  "<a href=\"#\">" + i + "</a>";
+			}
+		}
+		if(count<= 10){
+			for(var i = 1 ; i<= count; i++){
+				setPageList();
+			}
+		} else {
+			//前部分
+			if(pageIndex<= 4){
+				for(var i = 1; i<= 5;i++){
+					setPageList();
+				}
+				a[a.length] = "...<a href=\"#\" >" +  count + "</a>"
+			//后部分
+			}else if(pageIndex >= count -3){
+				a[a.length] = "<a href=\"#\">1</a>...";
+				for(var i = count - 4;i<=count; i ++){
+					setPageList();
+				}
+			//中间
+			} else{
+				a[a.length] = "<a href=\"#\">1</a>...";
+				for(var i = pageIndex - 2; i<= pageIndex + 2; i++){
+					setPageList();
+				}
+				a[a.length] = "...<a href=\"#\" >" +  count + "</a>"
+			}
+		}
+		if(pageIndex === count){
+			a[a.length] =  "<a href=\"#\" class=\"prev unclick\">下一页</a>";
+		}else{
+			a[a.length] =  "<a href=\"#\" class=\"prev\">下一页</a>";
+		}
+		container.innerHTML = a.join("");
+		var pageClick = function(){
+			var oAlink = container.getElementsByTagName("a");
+			var inx = pageIndex;
+			oAlink[0].onclick = function(){
+				if(inx === 1) return false;
+				inx--;
+				setPage(container,count,inx);
+				return false;
+			}
+			for(var i = 1; i< oAlink.length -1; i++){
+				oAlink[i].onclick = function(){
+					inx = parseInt(this.innerHTML);
+					setPage(container,count,inx);
+					return false;
+				}
+			}
+			oAlink[oAlink.length - 1].onclick =function(){
+				if(inx === count) return false;
+				inx++;
+				setPage(container,count,inx);
+				return false;
+			}
+		}()
+		
+	}
+	setPage(document.getElementsByTagName("div")[0],13,1);
+ </script>
+</html>
