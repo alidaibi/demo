@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>cssTab实例</title>
+  <style>
+	ul{ margin: 0; padding: 0; list-style: none; }
+	ul li{
+		position: relative;
+	}
+	ul li label{ 
+		position: relative;
+		z-index: 5;
+		float: left;
+		padding: 5px 10px; 
+		margin-right: 3px;
+		background: #ededf0;
+		border: 1px solid #ededf0;
+		border-bottom: none;
+		border-radius: 5px 5px 0 0;
+		color: #535353;
+		cursor: pointer;
+	}
+	.tab-container{ 
+		position: absolute; 
+		top: 0; 
+		left: 0; 
+		bottom: 0; 
+		right: 0; 
+		margin: auto; 
+		width: 532px; 
+		height:357px; 
+		border: 1px solid #CCC;
+		border-radius: 5px;
+	}
+	.tab-title{
+		padding: 15px 20px;
+		font-family: "Microsoft Yahei";
+		font-size: 14px;
+		color: #aaa;
+		background: #F4F5F6;
+		border-bottom: 1px solid #e7e8eb;
+	}
+	.tab-main{
+		padding: 13px 20px 35px 20px;
+	}
+	input[name='tabs']{ display: none; }
+	input[type='radio']:checked ~ div{
+		display: block;
+	}
+	input[type='radio']:checked ~ label{
+		background: #FFF;
+	}
+	.tab-menu{
+		display: none;
+		position: absolute;
+		z-index: 1;
+		top: 28px;
+		width: 460px;
+		padding: 15px;
+		border: 1px solid #ededf0;
+		word-break: break-all;
+	}
+  </style>
+ </head>
+ <body>
+  <div class="tab-container">
+	<div class="tab-title">
+		第一个项目实例
+	</div>
+	<div class="tab-main">
+		<ul>
+			<li>
+				<input type="radio" id="tab1" name="tabs" checked>
+				<label for="tab1">项目一</label>
+				<div class="tab-menu">
+					jasldjaslkdjslkdjaslkdajsdlkasjdalskdjsalkjlaksdjalkj
+				</div>
+			</li>
+			<li>
+				<input type="radio" id="tab2" name="tabs">
+				<label for="tab2">项目二</label>
+				<div class="tab-menu">
+					jasldjaslkdjslkdjaslkdajsdlkasjdalskdjsalkjlaksdjalkjjasldjaslkdjslkdjaslkdajsdlkasjdalskdjsalkjlaksdjalkjjasldjaslkdjslkdjaslkdajsdlkasjdalskdjsalkjlaksdjalkjjasldjaslkdjslkdjaslkdajsdlkasjdalskdjsalkjlaksdjalkj
+				</div>
+			</li>
+		</ul>
+	</div>
+  </div>
+ </body>
+</html>
