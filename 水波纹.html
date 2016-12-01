@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css3 水波纹</title>
+	</head>
+	<style type="text/css">
+		*{
+			margin:0; padding:0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		ul{
+			font-size: 0;
+			position: relative;
+			width:480px;
+			margin:40px auto;
+			-moz-user-select: none;
+			-webkit-user-select:none;
+			user-select:none;
+		}
+		li{
+			display: inline-block;
+			width:160px;
+			height: 60px;
+			line-height:60px;
+			background:#e95546;
+			font-size: 16px;
+			text-align: center;
+			color:#fff;
+			text-transform: uppercase;
+			overflow: hidden;
+			position: relative;
+			cursor:pointer;
+		}
+		.slide{
+			display:block;
+			position: absolute;
+			left:0;
+			bottom:0;
+			height:4px;
+			background:#4791FF;
+			transition: all .5s;
+		}
+		.ripple{
+			width:0;
+			height:0;
+			border-radius: 50%;
+			background:rgba(255,255,255,0.4);
+			-webkit-transform: scale(0);
+			-moz-transform: scale(0);
+			transform: scale(0);
+			position: absolute;
+			opacity: 1;
+		}
+		.rippleEffect{
+			-webkit-animation: rippleDrop .4s linear;
+			-moz-animation: rippleDrop .4s linear;
+			animation: rippleDrop .4s linear;
+		}
+		@-webkit-keyframes rippleDrop{
+			100%{
+				-webkit-transform: scale(2);
+				-moz-transform: scale(2);
+				transform: scale(2);
+				opacity: 0;
+			}
+		}
+		@-moz-keyframes rippleDrop{
+			100%{
+				-webkit-transform: scale(2);
+				-moz-transform: scale(2);
+				transform: scale(2);
+				opacity: 0;
+			}
+		}
+		@keyframes rippleDrop{
+			100%{
+				-webkit-transform: scale(2);
+				-moz-transform: scale(2);
+				transform: scale(2);
+				opacity: 0;
+			}
+		}
+	</style>
+	<body>
+		<ul>
+			<li>Tab One</li>
+			<li>Tab Two</li>
+			<li>Tab Three</li>
+			<li class="slide"></li>
+		</ul>
+	</body>
+	<script src="jquery-1.7.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('ul li').click(function(e){
+				if($(this).hasClass('slide')){
+					return;					
+				}
+				var whatTab = $(this).index();
+				var howFar = 160 * whatTab;
+				$('.slide').css({
+					left : howFar + "px"
+				});
+				
+				$('.ripple').remove();
+				var posX = $(this).offset().left,
+				    posY = $(this).offset().top,
+				    buttonWidth = $(this).width(),
+				    buttonHeight = $(this).height();
+				$(this).prepend("<span class='ripple'></span>");
+				if(buttonWidth >= buttonHeight){
+					buttonHeight = buttonWidth;
+				}else{
+					buttonWidth = buttonHeight;
+				}
+				var x = e.pageX - posX - buttonWidth / 2;
+				var y = e.pageY - posY - buttonHeight / 2;
+				
+				$('.ripple').css({
+					width:buttonWidth,
+					height:buttonHeight,
+					top: y + 'px',
+    				left: x + 'px'
+				}).addClass('rippleEffect');
+			});
+		})
+	</script>
+</html>
