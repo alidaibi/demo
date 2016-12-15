@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS3</title>
+<style>
+	body{
+		background: #F0F0F0;
+	}
+	.container{
+		position: relative;
+		width: 50px;
+		height: 50px;
+		text-align: center;
+		background: #000;
+		transition: all .5s ease 0s;
+	}
+	.container span{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 25px;
+		height: 1px;
+		margin-left: -12.5px;
+		margin-top: -1px;		
+		background: #FFF;
+		transition: all .5s ease 0s;
+	}
+	.container span:first-child{
+		transform: translateY(4px);
+	}
+	.container span:last-child{
+		transform: translateY(-4px);
+	}
+	.container:hover{
+		cursor: pointer;
+		background: rgba(0,0,0,.2);
+	}
+	.in span:last-child{
+		transform: rotate(45deg);
+	}
+	.in span:first-child{
+		transform: rotate(-45deg);
+	}
+</style>
+</head>
+<body>
+	<div id='container' class='container '>
+		<span></span>
+		<span></span>
+	</div>
+</body>
+<script type="text/javascript">
+	var container = document.getElementById('container');
+	container.onmouseenter = function(){
+		container.classList.add('in');
+		console.log(container.classList);
+	}
+	container.onmouseleave = function(){
+		console.log(2);
+		container.classList.remove('in');
+	}
+</script>
+</html>
