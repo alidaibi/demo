@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>星球</title>
+  <style>
+		body,html{
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #000;
+			overflow: hidden;
+		}
+		.wrap{
+			width: 100%;
+			height: 100%;
+		}
+		.scale-box{
+			
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 2500px;
+			height: 1600px;
+			margin: -800px 0 0 -1250px;
+			transform-origin: center 708px;
+			-webkit-transform-origin: center 708px;
+			animation: plans-rotate 300s both infinite linear;
+		}
+
+		.scale-box:before{
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: url(page1_bg.jpg) center center no-repeat;
+		}
+		@keyframes plans-rotate{
+			0%{
+				transform: rotate(0deg) scale(1);
+			}
+			100%{
+				transform: rotate(-360deg) scale(2);
+			}
+		}
+		#star{
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+  </style>
+ </head>
+ <body>
+	<div class="wrap">
+		<div class='scale-box'>
+			
+		</div>
+	</div>
+	<canvas id="star"></canvas>
+	<script>
+		(function(window){
+			var w = document.body.clientWidth;
+			var h = document.body.clientHeight;
+			var canvas = document.getElementById('star');
+			var ctx = canvas.getContext('2d');
+			var stars = [];
+
+			canvas.width = w;
+			canvas.height = h;
+
+			function star(canvasWidth,canvasHeight,speed){
+				this.x = Math.floor(Math.random() * canvasWidth);
+				this.y = Math.floor(Math.random() * canvasHeight);
+				this.opactity = Math.random() < 0.3 ? 0.3 : Math.random();
+				this.speed = speed;
+				this.size = Math.floor(Math.random() * 3);
+				this.step = 0;
+				this.stepSize = Math.random() / 30;    
+			}
+			star.prototype.render = function(ctx){
+				ctx.fillStyle="#fff";
+				ctx.globalAlpha=this.opactity;
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+				ctx.fill();
+				ctx.restore();
+			}
+			star.prototype.update= function(){
+				var t = this.y / Math.abs(this.y) * this.speed;
+				this.x += Math.cos(this.step += .05) * this.stepSize;
+				
+			}
+			for(var i = 0;i<300;i++){
+				stars.push(new star(canvas.width,canvas.height,0.05));
+			}
+			function drawStar(){
+				var that = this;
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				for(var i = 0; i<stars.length;i++){
+					stars[i].update();
+					stars[i].render(ctx);
+				}
+				this.loop = requestAnimationFrame(function(){
+					drawStar.apply(that);
+				});
+			}
+			drawStar();
+
+
+
+		})(window);
+	</script>
+ </body>
+</html>

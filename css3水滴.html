@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS3水滴</title>
+<style>
+	body{
+		background: #F0F0F0;
+	}
+	.water{
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		/*
+			对位
+			
+			80% 
+			左上
+			
+			0 
+			右上
+			
+			55% 
+			左下
+			
+			50%
+			右下
+
+		*/
+		border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+		transform: rotate(-45deg);
+		
+	}
+	.color-8{
+		background: #FB6964;
+		color: #FB6964;
+	}
+	.drop-element--dropped .water{
+		-webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+		transition: transform 0.2s, opacity 0.2s;
+		-webkit-transform: translate3d(0,25px,0) rotate3d(0,0,1,-45deg) scale3d(0.2,0.2,1);
+		transform: translate3d(0,25px,0) rotate3d(0,0,1,-45deg) scale3d(0.2,0.2,1);
+		opacity: 0;
+	}
+	.drop-element--dropped .drop-helper-1,
+	.drop-element--dropped .drop-helper-3{
+		animation: drop-anim-1 .3s ease-out 0.15s forwards;
+	}
+	.drop-element--dropped .drop-helper-2,
+	.drop-element--dropped .drop-helper-4{
+		animation: drop-anim-2 .3s ease-out 0.15s forwards;
+	}
+	.drop-helper-1, .drop-helper-2, .drop-helper-3, .drop-helper-4{
+		position: absolute;
+		display: block;
+		width: 6px;
+		height: 6px;
+		left: 50%;
+		bottom: -10px;
+		margin-left: -3px;
+		border-radius: 50%;
+		opacity: 0;
+	}
+	.drop-helper-3,.drop-helper-4{
+		width: 10px;
+		height: 10px;
+		margin-left: -5px;
+	}
+	.drop-helper-1 {
+		-webkit-transform-origin: -33px 50%;
+		transform-origin: -33px 50%;
+	}
+
+	.drop-helper-2 {
+		-webkit-transform-origin: 45px 50%;
+		transform-origin: 45px 50%;
+	}
+
+	.drop-helper-3 {
+		-webkit-transform-origin: -18px 50%;
+		transform-origin: -18px 50%;
+	}
+
+	.drop-helper-4 {
+		-webkit-transform-origin: 30px 50%;
+		transform-origin: 30px 50%;
+	}
+	@keyframes drop-anim-1{
+		0% {
+		-webkit-transform: rotate3d(0,0,1,5deg);
+		transform: rotate3d(0,0,1,5deg);
+		opacity: 0;
+		}
+		50% {
+			opacity: 0.5;
+		}
+		100% {
+			-webkit-transform: rotate3d(0,0,1,-90deg);
+			transform: rotate3d(0,0,1,-90deg);
+			opacity: 0;
+		}
+	}
+	@keyframes drop-anim-2{
+		0% {
+		-webkit-transform: rotate3d(0,0,1,-5deg);
+		transform: rotate3d(0,0,1,-5deg);
+		opacity: 0;
+		}
+		50% {
+			opacity: 0.5;
+		}
+		100% {
+			-webkit-transform: rotate3d(0,0,1,90deg);
+			transform: rotate3d(0,0,1,90deg);
+			opacity: 0;
+		}
+	}
+
+</style>
+</head>
+<body>
+	<div id='w' style='position: relative; width: 20px; height: 20px; margin: 40px auto;'>
+		<div class='water color-8'></div>
+		<i class='drop-helper-1 color-8'></i>
+		<i class='drop-helper-2 color-8'></i>
+		<i class='drop-helper-3 color-8'></i>
+		<i class='drop-helper-4 color-8'></i>
+	</div>
+</body>
+<script type="text/javascript">
+	var w = document.querySelector('#w');
+	w.onclick = function(e){
+		e.stopPropagation()
+		w.classList.add('drop-element--dropped');
+		return false;
+	}
+	document.body.onclick = function(e){
+		e.preventDefault()
+		w.classList.remove('drop-element--dropped');
+	}
+</script>
+</html>
