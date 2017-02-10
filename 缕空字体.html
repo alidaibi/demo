@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+	@font-face{
+		font-family:"brandon_grotesqueblack";
+		font-style:normal;
+		font-weight:400;
+		src:url(./font/brandon_blk-webfont.eot);
+		src:url(./font/brandon_blk-webfont.eot?#iefix)format('embedded-opentype'),
+			url(./font/brandon_blk-webfont.woff)format('woff'),
+			url(./font/brandon_blk-webfont.ttf)format('truetype'),
+			url(./font/brandon_blk-webfont.svg#brandon_grotesqueblack)format('svg')}
+	html,body{ margin: 0; height: 100%; background: url(bg.jpg); background-size: 100% 100%; overflow: hidden; }
+	
+</style>
+<body>
+<canvas id="myCanvas"></canvas>
+<script type="text/javascript">
+setTimeout(function(){
+	var c=document.getElementById("myCanvas");
+	var ctx=c.getContext("2d");
+	var w = document.documentElement.clientWidth;
+	var h = document.documentElement.clientHeight;
+	c.width = w;
+	c.height = h;
+	ctx.font = "500px 'brandon_grotesqueblack'";
+	ctx.globalCompositeOperation = "source-out";
+	ctx.fillStyle = "rgba(239,235,220,.93)";
+	ctx.fillRect(0, 0, w, h);
+
+	ctx.globalCompositeOperation = "destination-out";
+	ctx.textAlign = "center";
+
+	ctx.fillText("H",w/2,h/2+120);
+},5000);
+</script>
+</body>
+</html>

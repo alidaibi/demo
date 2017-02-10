@@ -90,9 +90,8 @@
 				ctx.fill();
 				ctx.restore();
 			}
-			star.prototype.update= function(){
-				var t = this.y / Math.abs(this.y) * this.speed;
-				this.x += Math.cos(this.step += .05) * this.stepSize;
+			star.prototype.update= function(ctx){
+				
 				
 			}
 			for(var i = 0;i<300;i++){
@@ -102,7 +101,7 @@
 				var that = this;
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				for(var i = 0; i<stars.length;i++){
-					stars[i].update();
+					stars[i].update(ctx);
 					stars[i].render(ctx);
 				}
 				this.loop = requestAnimationFrame(function(){
