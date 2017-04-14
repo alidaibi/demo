@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SVG Auto Conn Line</title>
+    <style>
+      html,body{ height: 100%; margih: 0; padding: 0; }
+    </style>
+  </head>
+  <body>
+    <?xml version="1.0" standalone="no"?>
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+    <svg width="100%" height="100%" version="1.1"
+    xmlns="http://www.w3.org/2000/svg">
+
+  
+    <path id="path" 
+    style="fill:white;stroke:red;stroke-width:2"/>
+    <!-- <path class="link" d="M 10,234 C 177,234 177,341 344,341" style="fill:none;stroke:#ccc;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" />
+    <!--  起点 -->
+    <!-- <path  style="fill:none;stroke:red;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" d="M 10,234 L11,235" /> -->
+    <!--  控制点1 -->
+    <!-- <path  style="fill:none;stroke:red;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" d="M 177,234 L178,235" /> -->
+    <!-- 控制点2 -->
+     <!-- <path  style="fill:none;stroke:red;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" d="M 177,341 L178,342" /> -->
+     <!--  终点 -->
+     <!-- <path  style="fill:none;stroke:red;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" d="M 341,341 L342,342" /> --> -->
+    </svg>
+
+    </svg>
+    <div id="c" style="position: absolute; width: 4px; height: 4px; background: red;"></div>
+    <div id="d" style="position: absolute; width: 4px; height: 4px; background: red;"></div>
+    <div id="a" style="position: absolute; top: 100px; left: 380px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div>
+    <div id="b" style="position: absolute; top: 0px; left: 280px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div>
+  </body>
+  <script src="jquery.min.js"></script>
+  <script src="jsPlumb-2.1.2-min.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script>
+  	var a = document.getElementById("a");
+    var b = document.getElementById("b");
+    var c = document.getElementById("c");
+    var d = document.getElementById("d");
+    var path = document.getElementById("path");
+    // 获取x1，y1，x2，y2
+    var position = {
+      x1: a.offsetLeft + a.offsetWidth,
+      y1: a.offsetTop + (a.offsetHeight / 2) - (c.offsetHeight/2),
+      x2: b.offsetLeft - d.offsetWidth,
+      y2: b.offsetTop + (b.offsetHeight / 2) - (d.offsetHeight/2),
+    }
+    position.spaceX = position.x1 - position.x2;
+    position.spaceY = position.y1 - position.y2;
+    console.log(position);
+    c.style.top = position.y1 + 'px';
+    c.style.left = position.x1 + 'px';
+    d.style.top = position.y2 + 'px';
+    d.style.left = position.x2 + 'px';
+    var start = position.x1 + ',' + position.y1;
+    var f1 = position.x2 + ',' + position.y2;
+    var f2 = position.x1 + ',' + position.y1;
+    //结束点的X,Y
+    var endX =  (position.x1 - (position.spaceX/2));
+    var endY =  (position.y1-(position.spaceY/2));
+
+    var control1 = (endX) + ',' + (position.y1);
+    var control2 = (endX) + ',' + (position.y1);
+
+    var s1 = (endX) + ',' + position.y2;
+    var s2 = (position.x2) + ',' + (position.y2);
+    path.setAttribute("d","M" + start + ' C ' +control1 + ' ' + control2+ ' ' + endX + ',' + endY + 'S '+ s1 + ' ' + s2);
+    // x 偏差23 y 偏差11
+    //path.setAttribute("d","M344.5,282 C452.5,282 429.5,293 431.5,177 C433.5,61 417.5,68 492.5,70 ");
+    /*
+      C177,-168 161,-175 236,-177
+
+      C177,27 257,71 196,38 
+     */
+  </script>
+</html>
