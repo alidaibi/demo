@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <title>SVGAutoConnLine</title>
     <style>
-      html,body{ height: 100%; margih: 0; padding: 0; }
+      *{
+        box-sizing: content-box;
+      }
+      html,body{ height: 100%; margih: 0; padding: 0;  }
       .path{
         stroke: #aaa;
         stroke-width: 4px;
@@ -53,38 +56,23 @@
 
     <svg width="100%" height="60%" version="1.1"
     xmlns="http://www.w3.org/2000/svg" >
-
-  
-    <!-- <path id="path" 
-    style="stroke: #aaa;stroke-width:4;"/> -->
-    <!-- <path class="link" d="M 10,234 C 177,234 177,341 344,341" style="fill:none;stroke:#ccc;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" />
-    <!--  起点 -->
-    <!-- <path  style="fill:none;stroke:red;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" d="M 10,234 L11,235" /> -->
-    <!--  控制点1 -->
-    <!-- <path  style="fill:none;stroke:red;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" d="M 177,234 L178,235" /> -->
-    <!-- 控制点2 -->
-     <!-- <path  style="fill:none;stroke:red;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" d="M 177,341 L178,342" /> -->
-     <!--  终点 -->
-     <!-- <path  style="fill:none;stroke:red;stroke-width=6px;cursor: default;marker-end: url(#markerArrow);" d="M 341,341 L342,342" /> -->
+      <!-- <path d="M 100 -1.5 L 100 31.5 M 100 30 L 100 42 M100 42 A 5 5 0 0,1 95 47" transform="translate(4.5,6)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="steelblue" style="" stroke-width="3"></path> -->
     </svg>
 
-    </svg>
-    <div id="a" style="position: absolute; top: 350px; left: 80px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div>
-    <div id="b" style="position: absolute; top: 40px; left: 280px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div>
-    <div id="c" style="position: absolute; top: 40px; left: 480px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div>
-    <div id="d" style="position: absolute; top: 350px; left: 480px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div>
-    <div id="e" style="position: absolute; top: 350px; left: 280px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div>
-    <button id="createDOM">创建dom</button>
-    <!-- <div id="control1" style="position: absolute; top: 0; width: 10px; height: 10px; border-radius: 50%; background: #000;"></div>
-    <div id="control2" style="position: absolute; top: 0; width: 4px; height: 4px; border-radius: 50%; background: #000;"></div> -->
+    <div id="a" style="position: absolute; top: 80px; left: 80px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div>
+    <!-- <div id="c" style="position: absolute; top: 80px; left: 200px; width: 30px; height: 30px; border: 4px solid #CCC; border-radius: 8px;"></div> -->
+    <!-- <div id="d" style="position: absolute; top: 80px; left: 480px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div> -->
+    
+    <div id="f" style="position: absolute; top: 80px; left: 200px; width: 30px; height: 30px; border-radius: 50%; background: #000;"></div>
+
+    <button id="createDOM" style="display: none">创建dom</button>
   </body>
   <script>
   	var a = document.getElementById("a");
-    var b = document.getElementById("b");
-    var c = document.getElementById("c");
-    var d = document.getElementById("d");
-    var e = document.getElementById("e");
-    var svg = document.getElementsByTagName('svg')[0];
+    // var c = document.getElementById("c");
+    // var d = document.getElementById("d");
+    var f = document.getElementById("f");
+    
     var btn = document.getElementById("createDOM");
     var body = document.getElementsByTagName("body")[0];
     btn.onclick = function(){
@@ -92,51 +80,116 @@
       div.classList.add("dom");
       body.appendChild(div);
     }
-    drawLine(a,b);
-    drawLine(b,e);
-    function drawLine(a,b){
-      //创建线条
-      var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
-      path.style = "stroke: #aaa;stroke-width:4; fill: none; stroke-dasharray: 0; stroke-dashoffset: 0;";
-
-      path.classList.add("path");
-      // 获取x1，y1，x2，y2
-      var position = {
-        x1: a.offsetLeft + a.offsetWidth/2,
-        y1: a.offsetTop + (a.offsetHeight /2) - 6,
-        x2: b.offsetLeft ,
-        y2: b.offsetTop + (b.offsetHeight /2) -6,
-      }
-      position.spaceX = position.x1 - position.x2;
-      position.spaceY = position.y1 - position.y2;
-      console.log(position);
-      var start = position.x1 + ',' + position.y1;
-      //结束点的X,Y
-      var endX =  (position.x1 - (position.spaceX/2));
-      var endY =  (position.y1 - (position.spaceY/2));
-
-
-      //debug
-      
-
-      var control1 = (endX) + ',' + (position.y1);
-      var control2 = (endX) + ',' + (position.y1);
-
-      
-      var s1 = (endX) + ',' + position.y2;
-      var s2 = (position.x2) + ',' + (position.y2);
-
-      path.setAttribute("d","M" + start + ' C ' +control1 + ' ' + control2+ ' ' + endX + ',' + endY + 'S ' + s1 + ' ' + s2);
-      var len = path.getTotalLength();
-      path.style = "stroke: #aaa;stroke-width:4; fill: none; stroke-dasharray: "+ len +"; stroke-dashoffset: "+ len +";";
-      svg.appendChild(path);
+    var option = {
+      minLength: 1000,
+      r: 8
     }
+    // drawLine(b,e,option);
+    // drawLine(b,d,option);
+    // drawLine(b,e,option);
+    // drawLine(a,f,option);
+    drawLine(a,f,option);
+    function drawLine(a,b,option){
+      var svg = document.getElementsByTagName('svg')[0]
+      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+      path.classList.add('path')
+      function Position () {
+        this.offsetX_a = a.offsetLeft
+        this.offsetX_b = b.offsetLeft
+        this.offsetY_a = a.offsetTop
+        this.offsetY_b = b.offsetTop
+        this.x1 = a.offsetLeft + a.offsetWidth / 2
+        this.y1 = a.offsetTop + (a.offsetHeight / 2)
+        this.x2 = b.offsetLeft + b.offsetWidth / 2
+        this.y2 = b.offsetTop + (b.offsetHeight / 2)
+        this.spaceX = this.x1 - this.x2
+        this.spaceY = this.y1 - this.y2
+        this.halfX = (this.x1 - (this.spaceX / 1.1))
+        this.halfY = (this.y1 - (this.spaceY / 1.1))
+        this.r = option.r || 5
+      }
+      var p = new Position()
+      var anticlockwise = []
+      var direction
+      if (p.x1 > p.x2 && p.y1 > p.y2) direction = 1
+      if (p.x1 < p.x2 && p.y1 < p.y2) direction = 2
+      if (p.x1 > p.x2 && p.y1 < p.y2) direction = 3
+      if (p.x1 < p.x2 && p.y1 > p.y2) direction = 4
+      if (Math.abs(p.offsetX_a - p.offsetX_b) <= 20 || Math.abs(p.offsetY_a - p.offsetY_b) <= 20) direction = 5
+      if (p.offsetX_a === p.offsetX_b || p.offsetY_a === p.offsetY_b) direction = 5
+
+      if ((p.x1 > p.x2 && p.y1 > p.y2) || (p.x1 < p.x2 && p.y1 < p.y2)) {
+        anticlockwise = [1, 0]
+      } else {
+        anticlockwise = [0, 1]
+      }
+
+      var getPath = function (anticlockwise, direction) {
+        var Path = {
+          1: function (anticlockwise) {
+            var start = p.x1 + ',' + p.y1
+            var firstL = p.halfX + ' ' + p.y1
+            var firstA = p.r + ' ' + p.r + ' 0 0,' + anticlockwise[0] + ' ' + (p.halfX - p.r) + ',' + (p.y1 - p.r)
+            var firstM = (p.halfX - p.r) + ',' + (p.y1 - p.r)
+            var twoL = (p.halfX - p.r) + ',' + (p.y2 + p.r)
+            var twoM = (p.halfX - p.r) + ',' + (p.y2 + p.r)
+            var twoA = p.r + ' ' + p.r + ' 0 0,' + anticlockwise[1] + (p.halfX - p.r - p.r) + ',' + p.y2
+            var threeL = p.x2 + ',' + p.y2
+            return 'M' + start + ' L ' + firstL + ' A ' + firstA + ' M ' + firstM + ' L ' + twoL + ' M ' + twoM + ' A ' + twoA + 'L' + threeL
+          },
+          2: function (anticlockwise) {
+            var start = p.x1 + ',' + p.y1
+            var firstL = p.halfX + ' ' + p.y1
+            var firstA = p.r + ' ' + p.r + ' 0 0,' + anticlockwise[0] + ' ' + (p.halfX + p.r) + ',' + (p.y1 + p.r)
+            var firstM = (p.halfX + p.r) + ',' + (p.y1 + p.r)
+            var twoL = (p.halfX + p.r) + ',' + (p.y2 - p.r)
+            var twoM = (p.halfX + p.r) + ',' + (p.y2 - p.r)
+            var twoA = p.r + ' ' + p.r + ' 0 0,' + anticlockwise[1] + (p.halfX + p.r + p.r) + ',' + p.y2
+            var threeL = p.x2 + ',' + p.y2
+            return 'M' + start + ' L ' + firstL + ' A ' + firstA + ' M ' + firstM + ' L ' + twoL + ' M ' + twoM + ' A ' + twoA + 'L' + threeL
+          },
+          3: function (anticlockwise) {
+            var start = p.x1 + ',' + p.y1
+            var firstL = p.halfX + ' ' + p.y1
+            var firstA = p.r + ' ' + p.r + ' 0 0,' + anticlockwise[0] + ' ' + (p.halfX - p.r) + ',' + (p.y1 + p.r)
+            var firstM = (p.halfX - p.r) + ',' + (p.y1 + p.r)
+            var twoL = (p.halfX - p.r) + ',' + (p.y2 - p.r)
+            var twoM = (p.halfX - p.r) + ',' + (p.y2 - p.r)
+            var twoA = p.r + ' ' + p.r + ' 0 0,' + anticlockwise[1] + (p.halfX - p.r - p.r) + ',' + p.y2
+            var threeL = p.x2 + ',' + p.y2
+            return 'M' + start + ' L ' + firstL + ' A ' + firstA + ' M ' + firstM + ' L ' + twoL + ' M ' + twoM + ' A ' + twoA + 'L' + threeL
+          },
+          4: function (anticlockwise) {
+            var start = p.x1 + ',' + p.y1
+            var firstL = p.halfX + ' ' + p.y1
+            var firstA = p.r + ' ' + p.r + ' 0 0,' + anticlockwise[0] + ' ' + (p.halfX + p.r) + ',' + (p.y1 - p.r)
+            var firstM = (p.halfX + p.r) + ',' + (p.y1 - p.r)
+            var twoL = (p.halfX + p.r) + ',' + (p.y2 + p.r)
+            var twoM = (p.halfX + p.r) + ',' + (p.y2 + p.r)
+            var twoA = p.r + ' ' + p.r + ' 0 0,' + anticlockwise[1] + (p.halfX + p.r + p.r) + ',' + p.y2
+            var threeL = p.x2 + ',' + p.y2
+            return 'M' + start + ' L ' + firstL + ' A ' + firstA + ' M ' + firstM + ' L ' + twoL + ' M ' + twoM + ' A ' + twoA + 'L' + threeL
+          },
+          5: function () {
+            var start = p.x1 + ',' + p.y1
+            return 'M' + start + ' L ' + p.x2 + ',' + p.y2
+          }
+        }
+        return Path[direction](anticlockwise)
+      }
+      console.log(direction)
+      path.setAttribute('d', getPath(anticlockwise, direction))
+      var len = path.getTotalLength()
+      path.style = 'stroke: #939192;stroke-width:4; fill: none; stroke-dasharray: ' + len + '; stroke-dashoffset: ' + len
+      svg.appendChild(path)
+    }
+    // drawLine(a,d,option);
+    // drawLine(a,f,option);
+    
     // x 偏差23 y 偏差11
     //path.setAttribute("d","M344.5,282 C452.5,282 429.5,293 431.5,177 C433.5,61 417.5,68 492.5,70 ");
     /*
-      C177,-168 161,-175 236,-177
-
-      C177,27 257,71 196,38 
+      M615,49 L 347.5 49 A 5 5 0 0,0 342.5,54 M342.5,54 L342.5 354 A 5 5 0 0,1 337.5 359 L80 359
      */
   </script>
 </html>
