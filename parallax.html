@@ -1,0 +1,128 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>视差滚动原理三</title>
+</head>
+<style>
+body{
+	height: 3000px;
+	overflow-x: hidden; 
+}
+.scene{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+img{
+	position: absolute;
+
+}
+#scene_back{
+}
+#scene_center{
+}
+#scene_front{
+
+}
+
+#pokemon1{
+	width: 150px;
+	top: 200px;
+	left: 50px;
+}
+#pokemon2{
+	width: 300px;
+	left: 800px;
+	top: 450px;
+}
+#pokemon3{
+	top: 600px;
+	left: 150px;
+}
+
+#pokemon4{
+	width: 200px;
+	left: 800px;
+	top: 400px;
+}
+#pokemon5{
+	width: 300px;
+	left: 500px;
+	top: 500px;
+}
+#pokemon6{
+	top: 1200px;
+}
+
+#pokemon7{
+	width: 150px;
+	left: 250px;
+	top: 550px;
+}
+#pokemon8{
+	width: 300px;
+	left: 100px;
+	top: 900px;
+}
+#pokemon9{
+	top: 1400px;
+	left: 400px;
+}
+
+ 
+</style>
+<body>
+
+<div id="scene_back" class="scene">
+	<img id="pokemon1" src="http://www.alloyteam.com/wp-content/uploads/2014/01/001.png">
+	<img id="pokemon4" src="http://www.alloyteam.com/wp-content/uploads/2014/01/004.png">
+	<img id="pokemon7" src="http://www.alloyteam.com/wp-content/uploads/2014/01/007.png">
+</div>
+<div id="scene_center" class="scene">
+	<img id="pokemon2" src="http://www.alloyteam.com/wp-content/uploads/2014/01/002.png">
+	<img id="pokemon5" src="http://www.alloyteam.com/wp-content/uploads/2014/01/005.png">
+	<img id="pokemon8" src="http://www.alloyteam.com/wp-content/uploads/2014/01/008.png">
+</div>
+<div id="scene_front" class="scene">
+	<img id="pokemon3" src="http://www.alloyteam.com/wp-content/uploads/2014/01/003.png">
+	<img id="pokemon6" src="http://www.alloyteam.com/wp-content/uploads/2014/01/006.png">
+	<img id="pokemon9" src="http://www.alloyteam.com/wp-content/uploads/2014/01/009.png">
+</div>
+
+<script>
+	var sceneBack = document.getElementById('scene_back'),
+		sceneCenter = document.getElementById('scene_center'),
+		sceneFront = document.getElementById('scene_front');
+	var old_top1 = 0,
+		old_top2 = 200,
+		old_top3 = 700;
+
+	addEvent(window,'scroll',onScroll);
+	onScroll();
+
+	function onScroll(e){
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		sceneBack.style.top = old_top1+scrollTop*.9+'px';
+		sceneCenter.style.top = old_top2+scrollTop*.7+'px';
+		sceneFront.style.top = old_top3+scrollTop*.3+'px';	
+	}
+
+   	function addEvent(eventTarget, eventType, eventHandler) {
+	    if (eventTarget.addEventListener) {
+	        eventTarget.addEventListener(eventType, eventHandler, false);
+	    } else {
+	        if (eventTarget.attachEvent) {
+	            eventType = "on" + eventType;
+	            eventTarget.attachEvent(eventType, eventHandler);
+	        } else {
+	            eventTarget["on" + eventType] = eventHandler;
+	        }
+	    }
+    }
+
+</script>
+
+</body>
+</html>
