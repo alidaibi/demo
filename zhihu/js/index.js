@@ -14,6 +14,8 @@ animate();
 function init() {
 
     camera = new THREE.PerspectiveCamera( 110, window.innerWidth / window.innerHeight, 1, 1000 );
+    
+    controls = new THREE.DeviceOrientationControls( camera );
 
     scene = new THREE.Scene();
 
@@ -97,6 +99,7 @@ function animate() {
      * 插入render本身自己创建的场景div中
      * 达到渲染场景的效果
      */
+    controls.update();
     renderer.render( scene, camera );
 
 }
