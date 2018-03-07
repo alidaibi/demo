@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+<html lang="en" data-use-rem style="font-size: 50px;">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="baidu-site-verification" content="KYXMWnK27s" />
+  <title>王者四月第3周战报</title>
+  <meta name="description" content="王者荣耀周报">
+  <meta name="Keywords" content="王者荣耀周报">
+  <link rel="stylesheet" href="./css/index.css">
+  <script type="text/javascript">
+    (function(win) {
+      var doc = win.document,
+        html = doc.documentElement,
+        option = html.getAttribute('data-use-rem');
+
+      if (option === null) return;
+
+      var baseHeight = parseInt(option).toString() == 'NaN' ? 1334 : parseInt(option),
+        grids = baseHeight / 100,
+        resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+        recalc = function() {
+          // default to 320
+          var clientHeight = html.clientHeight || 320;
+          //console.log(html.clientWidth,html.clientHeight,html.clientWidth/html.clientHeight)
+          if(html.clientWidth/html.clientHeight<0.5){
+            html.style.fontSize = '50px'
+            return false;
+          }
+          // alert(html.clientWidth+","+html.clientHeight+","+clientHeight / grids)
+
+            html.style.fontSize = Math.floor(clientHeight / grids) + 'px';
+
+
+        };
+      // Abort if browser does not support addEventListener
+      if (!doc.addEventListener) return;
+        // setTimeout(function(){
+      win.addEventListener(resizeEvt, recalc, false);
+    // },500)
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(window);
+  </script>
+
+</head>
+
+<body ontouchmove="return false">
+  <!-- 分享出去的页面添加class:wrapper-share，用于把标题"我"改成"TA" -->
+  <div class="wrapper wrapper-share">
+    <div class="slide">
+      <ul class="content" style="transform: translateZ(0px); position: relative; overflow: hidden; backface-visibility: hidden;">
+        <li class="page-slide screen1" style="position: absolute; top: 0px; left: 0px; transform: translateY(0px) translateZ(0px); visibility: visible;">
+          <div class="page-inner">
+            <!-- 第一屏第一页 -->
+            <div class="page1">
+              <div class="armour">
+                <p class="progressWrap">战场打理中<br/><span class="progress">0%</span></p>
+                <div class="leave7">
+                  <div class="avatarWrap">
+                    <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/Q4aYfx0sxuKJq6XkzDFjT5L4tll5Zq5z/140)"></div>
+                  </div>
+                  <div class="circle-center"></div>
+                </div>
+                <div class="leave6">
+                  <div class="circle-left"></div>
+                  <div class="circle-right"></div>
+                  <div class="circle-bottom"></div>
+                </div>
+                <div class="leave5">
+                  <div class="circle-wrap"></div>
+                  <div class="wing-lt"></div>
+                  <div class="wing-rt"></div>
+                </div>
+                <div class="leave4">
+                  <div class="horn"></div>
+                  <div class="wing-lb"></div>
+                  <div class="wing-rb"></div>
+                  <div class="block-left"></div>
+                  <div class="block-right"></div>
+                </div>
+                <div class="leave3">
+                  <div class="move1">
+                    <div class="rect">常胜大神</div>
+                  </div>
+                </div>
+              </div>
+              <div class="leave1">
+                <div class="tagWrap">
+                <ul class="tagLeft">
+                  <li class="l1">南山区第23貂蝉</li>
+                  <li class="l2">万年匹配</li>
+                  <li class="l3">上分狂魔</li>
+                  <li class="l4">28次5杀</li>
+                  <li class="l5">超神在世</li>
+                  <li class="l6">走位风骚</li>
+                  <li class="l7">30次MVP</li>
+                </ul>
+                <ul class="tagRight">
+                  <li class="r1">这是我的猎场</li>
+                  <li class="r2">10次四杀</li>
+                  <li class="r3">输出爆炸</li>
+                  <li class="r4">战神在世</li>
+                  <li class="r5">65次3杀</li>
+                  <li class="r6">上分狂魔</li>
+                  <li class="r7">钟爱后裔</li>
+                </ul>
+                    </div>
+              </div>
+              <div class="leave2">
+                <p class="date">04.15-04.21</p>
+                <h1 class="title">开启战绩之门</h1>
+                <div class="name">北北小锤子</div>
+                <div class="area">IOS三十七区 欲望之月</div>
+                <div class="start">开启</div>
+                <i class="screenshot"></i>
+              </div>
+              <!-- 添加class:show，显示选择区服弹窗 -->
+              <div class="popup">
+                <section class="popup-cont">
+                  <div class="tp">
+                    <div class="popup-title">选择您的游戏角色</div>
+                    <p class="ps">快速选择角色：</p>
+                    <div class="info">QQ12区-野蛮之锤-ambermu</div>
+                    <div class="select">
+                      <select name="">
+                        <option>请选择系统</option>
+                      </select>
+                      <select name="" id="selectSvr">
+                          <option value="2011">手Q1区-苍天翔龙</option>
+                          <option value="2012">手Q2区-铁血都督</option>
+                          <option value="2013" selected="">手Q3区-野蛮之锤</option>
+                          <option value="2014">手Q4区-正义爆轰</option>
+                          <option value="2015">手Q5区-机关造物</option>
+                          <option value="2016">手Q6区-名士狂歌</option>
+                          <option value="2017">手Q7区-致命灵药</option>
+                          <option value="2018">手Q8区-不死之炎</option>
+                          <option value="2019">手Q9区-生命主宰</option>
+                      </select>
+                      <select name="">
+                        <option>请选择角色</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="ft">
+                    <button type="button" data-role="button">取消</button>
+                    <button type="button" data-role="button">确定</button>
+                  </div>
+                </section>
+              </div>
+              <!-- 极端情况，用户上周开局次数为0,则添加class:show，显示下面弹窗 -->
+              <div class="popup">
+                <section class="popup-cont">
+                  <div class="tp">
+                    <p>阿欧~</p>
+                    <p>你上周没有在王者荣耀里对局哦！</p>
+                    <p>快去启动游戏来一把吧！</p>
+                  </div>
+                  <div class="ft">
+                    <button type="button" data-role="button">取消</button>
+                    <button type="button" data-role="button">确定</button>
+                  </div>
+                </section>
+              </div>
+
+            </div>
+            <!-- 第一屏第二页 -->
+            <div class="page2">
+              <h1 class="title">我的段位</h1>
+              <div class="armour2">
+                <div class="block-bottom"></div>
+                <div class="circle-inner">
+                    <div class="circle-right"></div>
+                </div>
+                <div class="wing"></div>
+                <div class="block-left"></div>
+                <div class="block-right"></div>
+                <div class="horn"></div>
+                <div class="wrap"></div>
+                <div class="gear"></div>
+                <div class="text-bg"></div>
+              </div>
+              <div class="main">
+                <img src="./images/fire_apng.png" class="canvas-fire" />
+                <div class="flip-container">
+                  <div class="flipper">
+                    <!-- 上周段位  -->
+                    <div class="before">
+                      <!-- level level-qingtong: 青铜  -->
+                      <!-- level level-baiyin: 白银  -->
+                      <!-- level level-huangjin: 黄金  -->
+                      <!-- level level-bojin: 铂金  -->
+                      <!-- level level-zuanshi: 砖石  -->
+                      <!-- level level-heiyao: 黑曜  -->
+                      <!-- level level-wangzhe: 王者  -->
+                      <!-- level level-rywangzhe: 荣耀王者  -->
+                      <div class="level level-heiyao">
+                        <!-- 王者以下段位用下面的节点  -->
+                        <p class="normal-text">I</p>
+                      </div>
+                    </div>
+                    <!-- 本周段位  -->
+                    <div class="after">
+                      <div class="level level-wangzhe">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="enter2">
+                  <p class="level-text before">荣耀黄金</p>
+                </div>
+                <p class="level-text after">荣耀王者</p>
+                <div class="enter2">
+                  <div class="level-star level-star-2 before">
+                    <ul>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="level-star level-star-4 after">
+                  <ul style="display:none;">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <!-- 王者以上的情况，显示星数 -->
+                  <div class="wangzhe"><span class="star"></span>x50</div>
+                </div>
+              </div>
+              <div class="enter1">
+                <p class="text">排位上升4星</p>
+                <p class="desc">当前段位超越67%召唤师</p>
+                <i class="arrow"></i>
+                <i class="screenshot"></i>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="page-slide screen3">
+          <div class="page-inner">
+            <h1 class="title">我的对战</h1>
+            <p class="detail">本周开局<span class="highlight">29</span>场，累计战斗<span class="highlight">28</span>场</p>
+            <ul class="fightWrap">
+              <li class="pw">
+                <div class="num">
+                  <div class="wrap">
+                    <span class="pillar" style="height:30%"></span>
+                  </div>
+                </div>
+              </li>
+              <li class="pp">
+                <div class="num">
+                  <div class="wrap">
+                    <span class="pillar" style="height:20%"></span>
+                  </div>
+                </div>
+              </li>
+              <li class="yl">
+                <div class="num">
+                  <div class="wrap">
+                    <span class="pillar" style="height:60%"></span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="data-text">
+              <dl>
+                <dt>排位<span class="arrowUp"></span></dt>
+                <dd></dd>
+              </dl>
+              <dl>
+                <dt>匹配</dt>
+                <dd></dd>
+              </dl>
+              <dl>
+                <dt>娱乐<span class="arrowDown"></span></dt>
+                <dd></dd>
+              </dl>
+            </div>
+            <div class="divi"></div>
+            <p class="saying">名次身外物 做大娱乐家</p>
+          </div>
+          <i class="arrow"></i>
+          <i class="screenshot"></i>
+        </li>
+        <li class="page-slide screen4">
+          <div class="page-inner">
+            <h1 class="title">我的对战</h1>
+            <div class="subTitle">生存能力好友<span class="rank">NO.10</span></div>
+            <div class="fightRadar">
+              <span class="bg"></span>
+              <span class="block"></span>
+              <span class="line"></span>
+              <div id="lastWeek" class="lastWeek"></div>
+              <div id="thisWeek" class="thisWeek"></div>
+            </div>
+            <div class="radar-mark">
+              <div class="lastWeek">上周</div>
+              <div class="thisWeek">本周</div>
+            </div>
+            <ul class="radar-text">
+              <li>推进<span class="mark">高</span></li>
+              <li>战绩(KDA)<span class="mark">高</span></li>
+              <li>生存<span class="mark">中等</span></li>
+              <li>团战<span class="mark">底</span></li>
+              <li>发育<span class="mark">高</span></li>
+              <li>输出<span class="mark">高</span></li>
+            </ul>
+            <div class="divi-title">荣誉数据</div>
+            <div class="data-text">
+              <dl>
+                <!-- 首次获得添加class="first-get" -->
+                <dd class="first-get"></dd>
+                <dt>MVP</dt>
+              </dl>
+              <dl>
+                <dd></dd>
+                <dt>超神</dt>
+              </dl>
+              <dl>
+                <dd></dd>
+                <dt>推塔</dt>
+              </dl>
+            </div>
+          </div>
+          <i class="arrow"></i>
+          <i class="screenshot"></i>
+        </li>
+        <li class="page-slide screen5">
+          <div class="page-inner">
+            <h1 class="title">我的常用英雄</h1>
+            <div class="subTitle">南山区<span class="rank">20</span>后裔</div>
+            <div class="heroWrap">
+              <div class="main">
+                <div class="bg"></div>
+                <img src="./images/flash_apng.png" class="canvas-flash" />
+                <div class="heroImg" style="background-image:url(./images/169.png)"></div>
+                <p class="heroName">后裔</p>
+                <p class="heroNum">30次</p>
+              </div>
+              <div class="sub left">
+                <div class="heroImg" style="background-image:url(./images/162.png)"></div>
+                <p class="heroName">娜可露露</p>
+                <p class="heroNum">25次</p>
+              </div>
+              <!-- 没有数据的情况添加class="empty"，同时修改相关文案 -->
+              <div class="sub right empty">
+                <div class="heroImg"></div>
+                <p class="heroName">暂无更多英雄</p>
+                <p class="heroNum">10次</p>
+              </div>
+              <div class="line"></div>
+            </div>
+            <div class="data-text">
+              <dl>
+                <dd>11.5</dd>
+                <dt>我的得分</dt>
+              </dl>
+              <dl>
+                <dd>2</dd>
+                <dt>好友排行</dt>
+              </dl>
+            </div>
+            <div class="divi-title">大神战局秀</div>
+            <p class="divi-desc">后羿五杀carry全场，配合肉后排暴力输出</p>
+            <div class="video-cont">
+              <div class="avatarWrap">
+                <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/Q4aYfx0sxuKJq6XkzDFjT5L4tll5Zq5z/140)"></div>
+              </div>
+              <p class="name">主播韩跑跑</p>
+              <div class="videoWrap">
+
+              </div>
+            </div>
+          </div>
+          <i class="arrow"></i>
+          <i class="screenshot"></i>
+        </li>
+        <li class="page-slide screen6">
+          <div class="page-inner">
+            <h1 class="title">我的常用英雄</h1>
+            <div class="main">
+              <div class="bg"></div>
+              <div class="block"></div>
+              <div class="line"></div>
+              <img src="./images/flash_apng.png" class="canvas-flash" />
+              <div class="heroImg" style="background-image:url(./images/169.png)"></div>
+              <p class="heroName">后裔</p>
+              <p class="heroNum">射手</p>
+            </div>
+            <p class="hero-desc">用后羿的召唤师90%也用鲁班</p>
+            <div class="divi-title">大神战局秀</div>
+            <p class="divi-desc">后羿五杀carry全场，配合肉后排暴力输出</p>
+            <div class="video-cont">
+              <div class="avatarWrap">
+                <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/Q4aYfx0sxuKJq6XkzDFjT5L4tll5Zq5z/140)"></div>
+              </div>
+              <p class="name">主播韩跑跑</p>
+              <div class="videoWrap">
+
+              </div>
+            </div>
+          </div>
+          <i class="arrow"></i>
+          <i class="screenshot"></i>
+        </li>
+        <li class="page-slide screen7">
+          <div class="page-inner">
+            <h1 class="title">我的常用英雄</h1>
+            <div class="main">
+              <div class="bg"></div>
+              <div class="block"></div>
+              <div class="line"></div>
+              <img src="./images/flash_apng.png" class="canvas-flash" />
+              <div class="heroImg" style="background-image:url(./images/169.png)"></div>
+              <p class="heroName">后裔</p>
+              <p class="heroNum">射手</p>
+            </div>
+            <p class="hero-desc">控制型肉盾 技能互补</p>
+            <div class="divi-title">高手好友</div>
+            <p class="divi-desc">峡谷基友一对对，找TA开黑一起飞</p>
+            <div class="data-text">
+              <dl>
+                <dd>
+                  <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/Q4aYfx0sxuKJq6XkzDFjT5L4tll5Zq5z/140)"></div>
+                </dd>
+                <dt>这是一个昵称</dt>
+              </dl>
+              <dl>
+                <dd>13局</dd>
+                <dt>最近使用</dt>
+              </dl>
+              <dl>
+                <dd>11.5</dd>
+                <dt>英雄得分</dt>
+              </dl>
+            </div>
+          </div>
+          <i class="arrow"></i>
+          <i class="screenshot"></i>
+        </li>
+        <li class="page-slide screen8">
+          <div class="page-inner">
+            <h1 class="title">神坑队友</h1>
+            <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/Q4aYfx0sxuKJq6XkzDFjT5L4tll5Zq5z/140)"></div>
+            <div class="main">
+              <div class="wing"></div>
+              <div class="horn"></div>
+            </div>
+            <ul class="saying-list">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <p class="name">这是一个昵称</p>
+            <div class="divi-title">嘴强王者也是王者</div>
+            <div class="data-text">
+              <dl>
+                <dd>6局</dd>
+                <dt>上周开黑</dt>
+              </dl>
+              <dl>
+                <dd>2.8</dd>
+                <dt>平均评分</dt>
+              </dl>
+            </div>
+          </div>
+          <i class="arrow"></i>
+          <i class="screenshot"></i>
+        </li>
+        <li class="page-slide screen9">
+          <div class="page-inner">
+            <h1 class="title">被我带飞的好友</h1>
+            <ul class="frinnd-list">
+              <li>
+                <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/ajNVdqHZLLCXBN4vKtu81xKbtzMk1SOV7dSCxOoo5BA/140)"></div>
+                <div class="num">30次</div>
+                <div class="name">嘴炮小可爱</div>
+              </li>
+              <li class="saying">
+                <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/PiajxSqBRaEJttOjHiagW82SxRm0p5RbEtggaez8aHUeY/140)"></div>
+                <div class="num">23次</div>
+                <div class="name">蛇口BOY</div>
+                <span class="popup">老司机带我</span>
+              </li>
+              <!-- 没有数据的情况添加class="empty"，同时修改相关文案 -->
+              <li class="empty">
+                <div class="avatar"></div>
+                <div class="num">0次</div>
+                <div class="name">暂无更多好友</div>
+              </li>
+            </ul>
+            <div class="divi"></div>
+            <p class="divi-desc">本周累计开黑<span class="num">25</span>场，被<span class="num">6</span>个好友带飞</p>
+          </div>
+          <i class="arrow"></i>
+          <i class="screenshot"></i>
+        </li>
+        <li class="page-slide screen10">
+          <div class="page-inner">
+            <h1 class="title">被我带飞的好友</h1>
+            <ul class="frinnd-list">
+              <li class="saying">
+                <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/ajNVdqHZLLCXBN4vKtu81xKbtzMk1SOV7dSCxOoo5BA/140)"></div>
+                <div class="num">30次</div>
+                <div class="name">嘴炮小可爱</div>
+                <span class="popup">老司机带我</span>
+              </li>
+              <!-- 没有数据的情况添加class="empty"，同时修改相关文案 -->
+              <li class="empty">
+                <div class="avatar"></div>
+                <div class="num">0次</div>
+                <div class="name">暂无更多好友</div>
+              </li>
+              <li>
+                <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/PiajxSqBRaEIQ4zq5e5wmtcNE26vvP8ziccyoCwvWic178/140)"></div>
+                <div class="num">9次</div>
+                <div class="name">王者润之</div>
+              </li>
+            </ul>
+            <div class="divi"></div>
+            <p class="divi-desc">本周累计开黑<span class="num">25</span>场，被<span class="num">6</span>个好友带飞</p>
+          </div>
+          <i class="arrow"></i>
+          <i class="screenshot"></i>
+        </li>
+        <li class="page-slide screen11">
+          <div class="page-inner">
+            <h1 class="title">好友榜单</h1>
+            <!--添加class="show" 显示无数据情况 -->
+            <div class="empty">
+              <div class="placehold"></div>
+              <p class="text">快叫上好友一起来玩吧！</p>
+            </div>
+            <ul class="frinnd-list">
+              <li>
+                <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/ajNVdqHZLLCXBN4vKtu81xKbtzMk1SOV7dSCxOoo5BA/140)"></div>
+                <div class="desc">击杀之王</div>
+                <div class="name">蛇口BOY</div>
+                <div class="detail">拿到222个<br/>人头</div>
+              </li>
+              <li>
+                <div class="avatar" style="background-image:url(http://shp.qlogo.cn/pghead/PiajxSqBRaEJttOjHiagW82SxRm0p5RbEtggaez8aHUeY/140)"></div>
+                <div class="desc">撩妹王</div>
+                <div class="name">蛇口BOY</div>
+                <span class="detail">与20个妹子<br/>开黑</span>
+              </li>
+              <!-- 没有数据的情况添加class="empty"，同时修改相关文案 -->
+              <li class="empty">
+                <div class="avatar"></div>
+                <div class="desc"></div>
+                <div class="name">暂无更多好友</div>
+                <div class="detail"></div>
+              </li>
+            </ul>
+            <div class="more">查看更多榜单</div>
+            <div class="gift-box">
+              <p class="gift-title">查看群排行</p>
+              <div class="gift-avatar"></div>
+              <p class="gift-desc">快来看看你在群里的排名！！！</p>
+              <p class="gift-name">马上赶去看看>></p>
+            </div>
+            <div class="subscribe">
+              <span class="checkbox checked"></span>订阅王者周报每周一公众号推送
+            </div>
+            <div class="share-btn"></div>
+          </div>
+          <i class="screenshot"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript" src="./js/zepto.js"></script>
+  <script type="text/javascript" src="./js/fastclick.js"></script>
+  <script type="text/javascript" src="./js/apng-canvas.js"></script>
+  <script type="text/javascript" src="./js/odometer.min.js"></script>
+  <script type="text/javascript" src="http://open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+  <script type="text/javascript" src="./js/sea.js"></script>
+  <script type="text/javascript" src="./js/sea-config.js"></script>
+  <script type="text/javascript">
+    seajs.use("./js/index.js");
+  </script>
+</body>
+
+</html>
